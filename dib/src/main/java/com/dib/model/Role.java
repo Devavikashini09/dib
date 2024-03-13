@@ -16,7 +16,7 @@ import java.util.Set;
 @Table(name = "roles")
 
 public class Role {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToMany

@@ -1,8 +1,6 @@
 package com.dib.service;
 
 import com.dib.model.Account;
-import com.dib.model.Customer;
-import com.dib.model.Employee;
 import com.dib.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

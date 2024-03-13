@@ -20,7 +20,7 @@ import java.util.Date;
 
 public class Customer {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne

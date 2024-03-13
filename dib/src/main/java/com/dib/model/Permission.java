@@ -17,7 +17,7 @@ import java.util.Set;
 
 public class Permission {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotNull

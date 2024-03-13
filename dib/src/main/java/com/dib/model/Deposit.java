@@ -13,7 +13,8 @@ import java.util.Date;
 @Data
 @Table(name = "Deposits")
 public class Deposit {
-    @Id @GeneratedValue
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne
