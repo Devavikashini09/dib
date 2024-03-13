@@ -18,6 +18,6 @@
 
 -[ ] Start preparing for ui setup
 
--[ ] Install jenkins for deployment(it ticket rise to install)
+  -[ ] Install jenkins for deployment(it ticket rise to install
 
 

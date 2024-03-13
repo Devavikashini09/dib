@@ -37,9 +37,17 @@ public class WithdrawalController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteWithdrawalById(@PathVariable int id){
-        withdrawalService.deleteWithdrawalById(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> deleteWithdrawalById(@PathVariable int id) {
+        String message;
+        try {
+            withdrawalService.deleteWithdrawalById(id);
+            message = "Withdrawal with ID " + id + " deleted successfully.";
+            return ResponseEntity.status(HttpStatus.OK).body(message);
+        } catch (Exception e) {
+            message = "Failed to delete withdrawal with ID " + id + ": " + e.getMessage();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
+        }
     }
+
 
 }

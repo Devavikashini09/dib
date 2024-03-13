@@ -1,10 +1,10 @@
 package com.dib.controller;
 
-import com.dib.model.Branch;
+
 import com.dib.model.Employee;
 import com.dib.service.EmployeeService;
-import jakarta.persistence.PreUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,10 +36,19 @@ public class EmployeeController {
     public ResponseEntity<Employee> updateEmployeeById(@PathVariable int id,@RequestBody Employee employee){
         return ResponseEntity.ok(employeeService.updateEmployeeById(id,employee));
     }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Employee> DeleteEmployeeById(@PathVariable int id) {
-        employeeService.deleteEmployeeById(id);
-        return ResponseEntity.noContent().build();
 
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> DeleteEmployeeById(@PathVariable int id) {
+        String message;
+        try {
+            employeeService.deleteEmployeeById(id);
+            message = "Employee with ID " + id + " deleted successfully.";
+            return ResponseEntity.status(HttpStatus.OK).body(message);
+        } catch (Exception e) {
+            message = "Failed to delete employee with ID " + id + ": " + e.getMessage();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
+        }
     }
+
 }

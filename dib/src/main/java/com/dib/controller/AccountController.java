@@ -37,11 +37,20 @@ public class AccountController {
   public ResponseEntity<Account> updateAccountById(@PathVariable int id,@RequestBody Account account){
      return ResponseEntity.ok(accountService.updateAccountById( id,account));
   }
+
   @DeleteMapping("/{id}")
-  public ResponseEntity<Void> deleteAccountById(@PathVariable int id){
-    accountService.deleteAccountById(id);
-    return ResponseEntity.noContent().build();
+  public ResponseEntity<String> deleteAccountById(@PathVariable int id) {
+    String message;
+    try {
+      accountService.deleteAccountById(id);
+      message = "Account with ID " + id + " deleted successfully.";
+      return ResponseEntity.status(HttpStatus.OK).body(message);
+    } catch (Exception e) {
+      message = "Failed to delete account with ID " + id + ": " + e.getMessage();
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
+    }
   }
+
 
 
 }

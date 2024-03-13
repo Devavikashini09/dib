@@ -39,10 +39,19 @@ public class TransactionController {
        return new ResponseEntity<>(transactionService.updateTransactionById(id,transaction),HttpStatus.CREATED);
 
     }
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTransactionById(@PathVariable int id){
-        transactionService.deleteTransactionById(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> deleteTransactionById(@PathVariable int id) {
+        String message;
+        try {
+            transactionService.deleteTransactionById(id);
+            message = "Transaction with ID " + id + " deleted successfully.";
+            return ResponseEntity.status(HttpStatus.OK).body(message);
+        } catch (Exception e) {
+            message = "Failed to delete transaction with ID " + id + ": " + e.getMessage();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
+        }
     }
+
 
 }

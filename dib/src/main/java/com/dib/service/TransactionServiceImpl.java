@@ -34,7 +34,7 @@ public class TransactionServiceImpl implements TransactionService{
             return transactionRepository.save(transaction);
         }
         else{
-            throw new NotFound("Transaction not found with"+ id);
+            throw new RuntimeException ("Transaction not found with"+ id);
         }
     }
 

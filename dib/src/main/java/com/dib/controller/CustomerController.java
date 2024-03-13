@@ -37,12 +37,20 @@ public class CustomerController {
        return new ResponseEntity<>(customerService.saveCustomer(customer),HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Customer> deleteCustomerById(@PathVariable int id){
-        customerService.deleteCustomerById(id);
-        return ResponseEntity.ok().build();
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCustomerById(@PathVariable int id) {
+        String message;
+        try {
+            customerService.deleteCustomerById(id);
+            message = "Customer with ID " + id + " deleted successfully.";
+            return ResponseEntity.status(HttpStatus.OK).body(message);
+        } catch (Exception e) {
+            message = "Failed to delete customer with ID " + id + ": " + e.getMessage();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
+        }
     }
+
 
 
 
