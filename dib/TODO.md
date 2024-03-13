@@ -2,6 +2,8 @@
 
 - [ ] .env file setup
 
+- [ ] .Exception need to be implemented
+
 - [ ] .Relationship between roles,users and permission
 
 -[ ]  .write business logic for user,customers and employees
@@ -17,4 +19,5 @@
 -[ ] Start preparing for ui setup
 
 -[ ] Install jenkins for deployment(it ticket rise to install)
+
 

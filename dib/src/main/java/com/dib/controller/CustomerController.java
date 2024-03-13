@@ -1,5 +1,6 @@
 package com.dib.controller;
 
+import com.dib.constant.Constants;
 import com.dib.model.Customer;
 import com.dib.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,8 @@ public class CustomerController {
     @Autowired
     public CustomerService customerService;
     @PostMapping
-    public ResponseEntity<Customer> saveCustomer(@RequestBody @NonNull Customer customer){
+    public ResponseEntity<Customer> saveCustomer(@RequestBody  @NonNull Customer customer){
+        String accountType = Constants.ACCOUNT_TYPE_SAVINGS;
         return new ResponseEntity<>(customerService.saveCustomer(customer),HttpStatus.CREATED);
     }
     @GetMapping
@@ -36,9 +38,9 @@ public class CustomerController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCustomerById(@PathVariable int id){
+    public ResponseEntity<Customer> deleteCustomerById(@PathVariable int id){
         customerService.deleteCustomerById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
 
     }
 

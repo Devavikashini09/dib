@@ -1,5 +1,6 @@
 package com.dib.model;
 
+import com.dib.constant.Constants;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -26,8 +27,7 @@ public class Account {
 
     private Long accountNumber;
 
-    @Enumerated(EnumType.STRING)
-    private AccountType accountType;
+    private String accountType;
 
     @NotNull
     private Long balance;

@@ -1,5 +1,6 @@
 package com.dib.model;
 
+import com.dib.constant.Constants;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -26,8 +27,8 @@ public class Customer {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Enumerated(EnumType.STRING)
-    private AccountType accounttype;
+
+    private String accountType;
 
     @NotNull
     private String first_name;

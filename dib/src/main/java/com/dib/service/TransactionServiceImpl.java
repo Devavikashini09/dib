@@ -1,5 +1,6 @@
 package com.dib.service;
 
+import com.dib.exception.NotFound;
 import com.dib.model.Transaction;
 import com.dib.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,13 +34,14 @@ public class TransactionServiceImpl implements TransactionService{
             return transactionRepository.save(transaction);
         }
         else{
-            throw new RuntimeException("Transaction not found with"+ id);
+            throw new NotFound("Transaction not found with"+ id);
         }
     }
 
     @Override
-    public void deleteTransactionById(int id) {
+    public String deleteTransactionById(int id) {
         transactionRepository.deleteById(id);
-
+        return "deleted successfully";
     }
+
 }

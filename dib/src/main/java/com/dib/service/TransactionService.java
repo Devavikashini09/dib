@@ -11,5 +11,5 @@ public interface TransactionService {
     public List<Transaction> getAllTransaction();
     public Optional<Transaction> getTransactionById(int id);
     public Transaction updateTransactionById(int id, Transaction transaction);
-    public void deleteTransactionById(int id);
+    public String deleteTransactionById(int id);
 }

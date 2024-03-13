@@ -1,11 +1,12 @@
 package com.dib.model;
 
+import com.dib.constant.Constants;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+
 
 @Entity
 @AllArgsConstructor
@@ -21,8 +22,7 @@ public class Transaction {
     @JoinColumn(name = "account_id")
     private Account account;
 
-    @Enumerated(EnumType.STRING)
-    private AccountType accountType;
+    private String AccountType;
 
     @NotNull
     private String name;
