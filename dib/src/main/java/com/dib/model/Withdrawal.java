@@ -17,7 +17,7 @@ import java.util.Date;
 
 public class Withdrawal {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private int id;
 
     @ManyToOne

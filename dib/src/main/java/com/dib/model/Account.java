@@ -2,13 +2,10 @@ package com.dib.model;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.boot.autoconfigure.web.WebProperties;
-
 import java.time.LocalDateTime;
 import java.util.Date;
 @Data
@@ -19,16 +16,17 @@ import java.util.Date;
 
 public class Account {
 
-    @Id @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private int id;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @Column(unique = true)
+    @Column(unique = true,length = 11)
     private Long accountNumber;
 
+    @NotNull
     private String accountType;
 
     @ManyToOne

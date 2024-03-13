@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Table(name = "employees")
 public class Employee {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private int id;
 
     @ManyToOne
@@ -29,7 +29,7 @@ public class Employee {
 
     @NotNull
     private String position;
-
+    @Column(unique = true,length = 10)
     private Long mobile_no;
 
     private Long employee_id;

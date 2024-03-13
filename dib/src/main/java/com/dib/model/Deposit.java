@@ -1,6 +1,7 @@
 package com.dib.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.Date;
 @Table(name = "Deposits")
 public class Deposit {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private int id;
 
     @ManyToOne
@@ -25,6 +26,7 @@ public class Deposit {
     @JoinColumn(name = "transaction_id")
     private Transaction transaction;
 
+    @NotNull
     private Long depositAmount;
 
     @Column(name = "created_at")

@@ -19,6 +19,7 @@ public class Branch {
     @NotNull
     private String name;
 
+    @NotNull
     private String address;
 
     private String city;

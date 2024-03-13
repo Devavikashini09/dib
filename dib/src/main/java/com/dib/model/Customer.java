@@ -20,7 +20,7 @@ import java.util.Date;
 
 public class Customer {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private int id;
 
     @ManyToOne
@@ -36,6 +36,7 @@ public class Customer {
     @NotNull
     private String last_name;
 
+    @Column(unique = true,length = 11)
     private Long mobile_no;
 
     @NotEmpty
