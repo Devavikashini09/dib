@@ -1,5 +1,6 @@
 package com.dib.service;
 
+import com.dib.Interface.WithdrawalService;
 import com.dib.model.Withdrawal;
 import com.dib.repository.WithdrawalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class WithdrawalServiceImpl implements WithdrawalService{
+public class WithdrawalServiceImpl implements WithdrawalService {
     @Autowired
     public WithdrawalRepository withdrawalRepository;
     @Override

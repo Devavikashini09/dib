@@ -1,8 +1,7 @@
 package com.dib.controller;
 
 import com.dib.model.Account;
-import com.dib.model.Branch;
-import com.dib.service.AccountService;
+import com.dib.Interface.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +19,7 @@ public class AccountController {
     public AccountService accountService;
   @PostMapping
     public ResponseEntity<Account> createAccount(@RequestBody @NonNull Account account){
-      return new ResponseEntity<>(accountService.createAccount(account),HttpStatus.CREATED);
+      return new ResponseEntity<>(accountService.createAcocount(account),HttpStatus.CREATED);
   }
   @GetMapping
     public List<Account> getAllAccount(){

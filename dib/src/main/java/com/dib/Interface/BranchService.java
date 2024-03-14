@@ -1,4 +1,4 @@
-package com.dib.service;
+package com.dib.Interface;
 
 import com.dib.model.Branch;
 import com.dib.model.Customer;

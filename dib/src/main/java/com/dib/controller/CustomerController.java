@@ -2,7 +2,7 @@ package com.dib.controller;
 
 import com.dib.constant.Constants;
 import com.dib.model.Customer;
-import com.dib.service.CustomerService;
+import com.dib.Interface.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

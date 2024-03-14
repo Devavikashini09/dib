@@ -1,5 +1,6 @@
 package com.dib.service;
 
+import com.dib.Interface.DepositService;
 import com.dib.model.Deposit;
 import com.dib.repository.DepositRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class DepositServiceImpl implements DepositService{
+public class DepositServiceImpl implements DepositService {
     @Autowired
     public DepositRepository depositRepository;
     @Override

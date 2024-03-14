@@ -2,7 +2,7 @@ package com.dib.controller;
 
 
 import com.dib.model.Employee;
-import com.dib.service.EmployeeService;
+import com.dib.Interface.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

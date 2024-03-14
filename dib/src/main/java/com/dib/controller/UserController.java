@@ -1,7 +1,7 @@
 package com.dib.controller;
 
 import com.dib.model.User;
-import com.dib.service.UserService;
+import com.dib.Interface.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

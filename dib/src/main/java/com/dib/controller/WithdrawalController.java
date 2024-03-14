@@ -1,7 +1,7 @@
 package com.dib.controller;
 
 import com.dib.model.Withdrawal;
-import com.dib.service.WithdrawalService;
+import com.dib.Interface.WithdrawalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

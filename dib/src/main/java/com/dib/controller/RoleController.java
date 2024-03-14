@@ -1,8 +1,7 @@
 package com.dib.controller;
 
 import com.dib.model.Role;
-import com.dib.model.Transaction;
-import com.dib.service.RoleService;
+import com.dib.Interface.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 package com.dib.controller;
 
 import com.dib.model.Permission;
-import com.dib.service.PermissionService;
+import com.dib.Interface.PermissionService;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

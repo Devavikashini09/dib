@@ -1,16 +1,15 @@
 package com.dib.service;
 
-import com.dib.model.Employee;
+import com.dib.Interface.PermissionService;
 import com.dib.model.Permission;
 import com.dib.repository.PermissionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 @Service
-public class PermissionServiceImpl implements PermissionService{
+public class PermissionServiceImpl implements PermissionService {
     @Autowired
     public PermissionRepository permissionRepository;
     @Override

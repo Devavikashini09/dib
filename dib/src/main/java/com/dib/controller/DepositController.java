@@ -1,8 +1,7 @@
 package com.dib.controller;
 
 import com.dib.model.Deposit;
-import com.dib.model.Employee;
-import com.dib.service.DepositService;
+import com.dib.Interface.DepositService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

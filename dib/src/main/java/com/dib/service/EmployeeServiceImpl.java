@@ -1,5 +1,6 @@
 package com.dib.service;
 
+import com.dib.Interface.EmployeeService;
 import com.dib.exception.NotFound;
 import com.dib.model.Employee;
 import com.dib.repository.EmployeeRepository;

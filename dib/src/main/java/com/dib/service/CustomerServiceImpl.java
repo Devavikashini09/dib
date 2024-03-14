@@ -1,5 +1,6 @@
 package com.dib.service;
 
+import com.dib.Interface.CustomerService;
 import com.dib.model.Customer;
 import com.dib.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
     @Autowired
     public CustomerRepository customerRepository;
     @Override

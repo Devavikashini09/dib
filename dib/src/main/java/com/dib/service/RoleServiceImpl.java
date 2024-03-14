@@ -1,5 +1,6 @@
 package com.dib.service;
 
+import com.dib.Interface.RoleService;
 import com.dib.model.Role;
 import com.dib.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;

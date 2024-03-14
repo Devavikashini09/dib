@@ -1,5 +1,6 @@
 package com.dib.service;
 
+import com.dib.Interface.AccountService;
 import com.dib.model.Account;
 import com.dib.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +10,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AccountServiceImpl implements AccountService{
+public class AccountServiceImpl implements AccountService {
     @Autowired
     public AccountRepository accountRepository;
     @Override
-    public Account createAccount(Account account) {
+    public Account createAcocount(Account account) {
         return accountRepository.save(account);
     }
 

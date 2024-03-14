@@ -1,6 +1,6 @@
 package com.dib.service;
 
-import com.dib.exception.NotFound;
+import com.dib.Interface.TransactionService;
 import com.dib.model.Transaction;
 import com.dib.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class TransactionServiceImpl implements TransactionService{
+public class TransactionServiceImpl implements TransactionService {
     @Autowired
     public TransactionRepository transactionRepository;
     @Override

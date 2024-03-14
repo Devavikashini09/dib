@@ -1,7 +1,7 @@
 package com.dib.controller;
 
 import com.dib.model.Transaction;
-import com.dib.service.TransactionService;
+import com.dib.Interface.TransactionService;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

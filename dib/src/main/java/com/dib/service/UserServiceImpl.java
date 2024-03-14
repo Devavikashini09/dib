@@ -1,5 +1,6 @@
 package com.dib.service;
 
+import com.dib.Interface.UserService;
 import com.dib.model.User;
 import com.dib.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
