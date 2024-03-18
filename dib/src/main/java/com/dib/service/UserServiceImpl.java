@@ -1,33 +1,37 @@
 package com.dib.service;
 
-import com.dib.Interface.UserService;
-import com.dib.model.User;
+import com.dib.model.Users;
 import com.dib.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-@Service
-public class UserServiceImpl implements UserService {
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
+@Service
+public  class UserServiceImpl {
     @Autowired
-    public PasswordEncoder passwordEncoder;
+    private UserRepository userRepository;
     @Autowired
-    public UserRepository userRepository;
-    @Override
-    public User registerUser(User user) {
+    private PasswordEncoder passwordEncoder;
+
+    public Users addDetails(Users user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
-
-    @Override
-    public User loginUser(String email, String password) {
-        User user = userRepository.findByEmail(email);
-        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-            return user;
+    //registration
+    public List<Users> findUserByUserName(String name) {
+        Optional<Users> optionalUsers = Optional.ofNullable(userRepository.findByUsername(name));
+        if(optionalUsers.isPresent()){
+            List<Users> userList = optionalUsers
+                    .map(Collections::singletonList) // Converts to List
+                    .orElse(Collections.emptyList());
+            return userList;}
+        else{
+            throw new RuntimeException("not found username");
         }
-        return null;
     }
-
 
 }

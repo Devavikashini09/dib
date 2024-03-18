@@ -1,6 +1,4 @@
 package com.dib.model;
-
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -8,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,43 +15,40 @@ import java.util.Date;
 
 public class Account {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-
+    @NotNull
     @Column(unique = true,length = 11)
-    private Long accountNumber;
+    private Long account_number;
 
     @NotNull
-    private String accountType;
+    private String account_type;
 
-    @ManyToOne
     @JoinColumn(name = "branch_id")
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Branch branch;
 
     @NotNull
     private Long balance;
 
-    private Date openingDate;
-
-    private Date closingDate;
+    private Date opening_date;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private LocalDateTime updated_at;
     @PrePersist
     protected void onCreate(){
-        this.createdAt=LocalDateTime.now();
+        this.created_at=LocalDateTime.now();
+        this.updated_at=LocalDateTime.now();
     }
 
     @PreUpdate
     protected void onUpdate(){
-        this.updatedAt=LocalDateTime.now();
+        this.updated_at=LocalDateTime.now();
     }
 
 }

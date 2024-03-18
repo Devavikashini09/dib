@@ -1,7 +1,7 @@
 package com.dib.repository;
 
 import com.dib.model.Role;
-import com.dib.model.User;
+import com.dib.model.Users;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.data.jpa.repository.JpaRepository;
 

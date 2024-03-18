@@ -1,35 +1,43 @@
 package com.dib.controller;
 
-import com.dib.model.User;
-import com.dib.Interface.UserService;
+import com.dib.model.Login;
+import com.dib.model.Users;
+import com.dib.service.CustomerUserDetailsService;
+import com.dib.service.JwtUtilityServiceImpl;
+import com.dib.service.UserServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 @RestController
-@RequestMapping("/users")
-
+@CrossOrigin
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
+    @Autowired
+    private CustomerUserDetailsService customerUserDetailsService;
 
-    @PostMapping("/register")
-    public User registerUser(@RequestBody User user) {
-        return userService.registerUser(user);
+    @Autowired
+    private JwtUtilityServiceImpl jwtUtilityService;
 
-    }
+    @PostMapping("/signup")
+    public Users addDetails(@Valid @RequestBody Users user){
+        return userService.addDetails(user);
+    }//registration
 
     @PostMapping("/login")
-    public ResponseEntity<User> loginUser(@RequestParam String email, @RequestParam String password) {
-        User user = userService.loginUser(email, password);
-        if (user != null) {
-            return ResponseEntity.ok(user);
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    public String createUser(@RequestBody Login login) {
+        if (customerUserDetailsService.loadUserByUsername(login.getUsername()) == null) {
+            return "Invalid credentials";
         }
-
-
+        return jwtUtilityService.generateToken(login.getUsername());
     }
+
+    @GetMapping("/registration/{username}")
+    public List<Users> findCustomerByUsername(@PathVariable("username") String userName){
+        return userService.findUserByUserName(userName);
+    }
+
 }

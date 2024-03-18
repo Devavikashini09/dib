@@ -1,14 +1,10 @@
 package com.dib.model;
-
-import com.dib.constant.Constants;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -20,15 +16,12 @@ import java.util.Date;
 
 public class Customer {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-
-    private String accountType;
+    @NotNull
+    private String account_type;
 
     @NotNull
     private String first_name;
@@ -36,39 +29,51 @@ public class Customer {
     @NotNull
     private String last_name;
 
-    @Column(unique = true,length = 11)
+    @NotNull @Column(unique = true,length = 11)
     private Long mobile_no;
 
     @NotEmpty
     private String address;
 
+    @NotNull
     private String city;
 
+    @NotNull
     private String state;
 
+    @NotNull
     private String country;
 
-    @NotEmpty @Column(unique = true)
+    @NotEmpty
+    @Column(unique = true)
     private String email;
 
     private Date date_of_birth;
 
+    @NotNull
     private Long customer_id;
 
+    @NotNull
+    private  String gender;
+
+    @NotNull
+    private Long initial_balance;
+
+    @NotNull
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
+    private LocalDateTime created_at;
+    @NotNull
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
-
+    private LocalDateTime updated_at;
 
     @PrePersist
     protected void onCreate(){
-        this.createdAt=LocalDateTime.now();
+        this.created_at=LocalDateTime.now();
+        this.updated_at=LocalDateTime.now();
     }
     @PreUpdate
     protected void onUpdate(){
-        this.updatedAt=LocalDateTime.now();
+        this.updated_at=LocalDateTime.now();
     }
 
 

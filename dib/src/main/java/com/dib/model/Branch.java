@@ -13,13 +13,11 @@ import lombok.NoArgsConstructor;
 @Table (name = "branches")
 public class Branch {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     private int id;
 
-    @NotNull
     private String name;
 
-    @NotNull
     private String address;
 
     private String city;

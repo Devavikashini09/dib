@@ -27,21 +27,22 @@ public class Deposit {
     private Transaction transaction;
 
     @NotNull
-    private Long depositAmount;
+    private Long deposit_amount;
 
     @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    private LocalDateTime created_at;
 
     @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    private LocalDateTime updated_at;
 
 
     @PrePersist
     protected void onCreate(){
-        this.createdAt=LocalDateTime.now();
+        this.created_at=LocalDateTime.now();
+        this.updated_at=LocalDateTime.now();
     }
     @PreUpdate
     protected void onUpdate(){
-        this.updatedAt=LocalDateTime.now();
+        this.updated_at=LocalDateTime.now();
     }
 }
