@@ -1,11 +1,9 @@
 package com.dib.service;
-
 import com.dib.Interface.CustomerService;
 import com.dib.model.Customer;
 import com.dib.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 

@@ -24,10 +24,6 @@ public class Withdrawal {
     @JoinColumn(name = "account_id")
     private Account account;
 
-    @ManyToOne
-    @JoinColumn(name = "transaction_id")
-    private Transaction transaction;
-
     private Long withdrawal_amount;
 
     @Column(name = "created_at")

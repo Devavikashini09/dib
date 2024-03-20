@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -59,9 +60,13 @@ public class Customer {
     @NotNull
     private Long initial_balance;
 
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Account> accounts;
+
     @NotNull
     @Column(name = "created_at")
     private LocalDateTime created_at;
+
     @NotNull
     @Column(name = "updated_at")
     private LocalDateTime updated_at;

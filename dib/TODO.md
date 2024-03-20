@@ -11,11 +11,11 @@
 
 -[x]  manipulating your tables with postman 
 
--[X] Set proper naming in all model
+-[x] Set proper naming in all model
 
 -[ ]  .write javascript manipulation 
 
--[ ]  .Jwt authentication
+-[x]  .Jwt authentication
 
 -[X] .complete validation
 
@@ -23,12 +23,17 @@
 
 -[ ]  .write business logic for user,customers and employees
 
-
 -[ ] .Start preparing for ui setup
 
 -[ ] .env file setup
 
 -[ ] .Install jenkins for deployment(it ticket rise to install
+
+-[ ] Customer id and employee id should automatically generated while submitting the form 
+
+//error
+1.while login token is generated that should be return as string instead of token 
+
 
 
 

@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -15,6 +17,9 @@ public class Branch {
 
     @Id @GeneratedValue
     private int id;
+
+//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+//    private List<Customer> accounts;
 
     private String name;
 

@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -26,9 +28,16 @@ public class Account {
     @NotNull
     private String account_type;
 
-    @JoinColumn(name = "branch_id")
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "branch_id",nullable = false)
     private Branch branch;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Transaction> transactions = new ArrayList<>();
 
     @NotNull
     private Long balance;
@@ -51,4 +60,7 @@ public class Account {
         this.updated_at=LocalDateTime.now();
     }
 
+    public Object getAccountNumber() {
+        return this.account_number;
+    }
 }

@@ -25,7 +25,7 @@ public class BankingSystemSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(e->e.disable());
         http.authorizeHttpRequests(auth->
-                        auth.requestMatchers("/signup","/login").permitAll()
+                        auth.requestMatchers("/signup","/login","/employees","/branches","/customers","/accounts").permitAll()
                                 .anyRequest().authenticated())
                 .sessionManagement(Customizer.withDefaults())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)

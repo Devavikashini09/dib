@@ -19,19 +19,16 @@ public class Transaction {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name="account_id")
+    @JoinColumn(name = "account_id",nullable = false)
     private Account account;
 
-    private String account_type;
+    private Long account_num1;
 
-    @NotNull
-    private String name;
+    private Long account_num2;
+
 
     @NotNull
     private String transaction_type;
-
-    @NotNull
-    private String transfer_type;
 
     @NotNull
     private Long amount;

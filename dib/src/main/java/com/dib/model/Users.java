@@ -1,17 +1,11 @@
 package com.dib.model;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -29,16 +23,16 @@ public class Users {
     private String email;
 
     @NotBlank(message = "user name  should not be blank")
-
     private String username;
-    @NotBlank(message = "Password  should not be blank")
 
+    @NotBlank(message = "Password  should not be blank")
     private String Password;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Role> roles;
 
-//    public Customer(String name, String password, List<GrantedAuthority> list) {
+    public Users(String name, String password, List<GrantedAuthority> list) {
     }
+}
 
 

@@ -22,10 +22,6 @@ public class Deposit {
     @JoinColumn(name = "account_id")
     private Account account;
 
-    @ManyToOne
-    @JoinColumn(name = "transaction_id")
-    private Transaction transaction;
-
     @NotNull
     private Long deposit_amount;
 
