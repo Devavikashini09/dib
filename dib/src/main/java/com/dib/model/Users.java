@@ -23,6 +23,7 @@ public class Users {
     private String email;
 
     @NotBlank(message = "user name  should not be blank")
+    @Column(unique = true)
     private String username;
 
     @NotBlank(message = "Password  should not be blank")

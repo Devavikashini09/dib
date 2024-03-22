@@ -1,5 +1,6 @@
 package com.dib.controller;
 
+import com.dib.Interface.EmployeeService;
 import com.dib.model.Role;
 import com.dib.Interface.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,17 @@ public class RoleController {
 
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRoleById(@PathVariable int id){
-       roleService.deleteRoleById(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> deleteRoleById(@PathVariable int id){
+
+        String message;
+        try {
+            roleService.deleteRoleById(id);
+            message = "Role with ID " + id + " deleted successfully.";
+            return ResponseEntity.status(HttpStatus.OK).body(message);
+        } catch (Exception e) {
+            message = "Role to delete employee with ID " + id + ": " + e.getMessage();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
+        }
+
     }
 }

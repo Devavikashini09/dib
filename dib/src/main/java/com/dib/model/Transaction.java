@@ -26,7 +26,6 @@ public class Transaction {
 
     private Long account_num2;
 
-
     @NotNull
     private String transaction_type;
 

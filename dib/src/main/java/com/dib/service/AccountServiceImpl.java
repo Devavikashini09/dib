@@ -1,11 +1,11 @@
 package com.dib.service;
-
 import com.dib.Interface.AccountService;
+import com.dib.exception.NotFoundCustomer;
+import com.dib.exception.NotFoundUser;
 import com.dib.model.Account;
 import com.dib.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +14,8 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     public AccountRepository accountRepository;
     @Override
-    public Account createAcocount(Account account) {
+    public Account createAccount(Account account) {
+
         return accountRepository.save(account);
     }
 
@@ -35,13 +36,20 @@ public class AccountServiceImpl implements AccountService {
             return accountRepository.save(account);
         }
         else{
-            throw new RuntimeException("Account not found with"+ id);
+            throw new NotFoundCustomer();
         }
     }
 
     @Override
-    public void deleteAccountById(int id) {
-        accountRepository.deleteById(id);
+    public String deleteAccountById(int id) {
+        Optional<Account> optional = accountRepository.findById(id);
+        if (optional.isPresent()) {
+            Account account = optional.get();
+            accountRepository.save(account);
+            return "User deleted";
+        } else {
+            throw new NotFoundUser();
+        }
 
     }
 }

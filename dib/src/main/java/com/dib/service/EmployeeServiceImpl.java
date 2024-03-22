@@ -1,7 +1,7 @@
 package com.dib.service;
 
 import com.dib.Interface.EmployeeService;
-import com.dib.exception.NotFound;
+import com.dib.exception.NotFoundUser;
 import com.dib.model.Employee;
 import com.dib.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +17,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee createEmployee(Employee employee) {
+
         return employeeRepository.save(employee);
     }
 
@@ -36,13 +37,20 @@ public class EmployeeServiceImpl implements EmployeeService {
             employee.setId(id);
             return employeeRepository.save(employee);
         } else {
-            throw new NotFound();
+            throw new NotFoundUser();
         }
     }
 
     @Override
-    public void deleteEmployeeById(int id) {
-        employeeRepository.deleteById(id);
+    public String deleteEmployeeById(int id) {
+        Optional<Employee> optional = employeeRepository.findById(id);
+        if (optional.isPresent()) {
+            Employee employee = optional.get();
+            employeeRepository.save(employee);
+            return "Employee deleted";
+        } else {
+            throw new NotFoundUser();
+        }
 
     }
 }

@@ -1,11 +1,9 @@
 package com.dib.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 @Entity
@@ -18,8 +16,8 @@ public class Branch {
     @Id @GeneratedValue
     private int id;
 
-//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-//    private List<Customer> accounts;
+    @OneToMany(mappedBy = "Branch")
+    private List<Customer> customers;
 
     private String name;
 

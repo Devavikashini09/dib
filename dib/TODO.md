@@ -7,11 +7,11 @@
 
 -[x]  .push in github
 
--[x]   .add commit after 1 Module
+-[x] .add commit after 1 Module
 
 -[x]  manipulating your tables with postman 
 
--[x] Set proper naming in all model
+-[x]  Set proper naming in all model
 
 -[ ]  .write javascript manipulation 
 
@@ -21,7 +21,7 @@
 
 -[ ]  exception handling
 
--[ ]  .write business logic for user,customers and employees
+-[ ]  connect the users with customers using relationship
 
 -[ ] .Start preparing for ui setup
 

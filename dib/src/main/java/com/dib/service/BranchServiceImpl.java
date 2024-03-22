@@ -1,11 +1,11 @@
 package com.dib.service;
 
 import com.dib.Interface.BranchService;
+import com.dib.exception.NotFoundUser;
 import com.dib.model.Branch;
 import com.dib.repository.BranchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 @Service
@@ -15,6 +15,7 @@ public class BranchServiceImpl implements BranchService {
 
     @Override
     public Branch saveBranch(Branch branch) {
+
         return branchRepository.save(branch);
     }
 
@@ -35,7 +36,7 @@ public class BranchServiceImpl implements BranchService {
            return branchRepository.save(branch);
        }
        else {
-           throw new RuntimeException("Branch not found with"+ id);
+           throw new NotFoundUser();
        }
     }
 

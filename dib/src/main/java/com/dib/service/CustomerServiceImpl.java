@@ -1,5 +1,7 @@
 package com.dib.service;
 import com.dib.Interface.CustomerService;
+import com.dib.exception.NotFoundCustomer;
+import com.dib.exception.NotFoundUser;
 import com.dib.model.Customer;
 import com.dib.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,13 +37,20 @@ public class CustomerServiceImpl implements CustomerService {
             return customerRepository.save(customer);
         }
         else{
-            throw new RuntimeException("Customer not found with"+ id);
+            throw new NotFoundCustomer();
         }
     }
 
     @Override
-    public void deleteCustomerById(int id) {
-        customerRepository.deleteById(id);
+    public String deleteCustomerById(int id) {
+        Optional<Customer> optional = customerRepository.findById(id);
+        if (optional.isPresent()) {
+            Customer customer = optional.get();
+            customerRepository.save(customer);
+            return "Customer deleted";
+        } else {
+            throw new NotFoundUser();
+        }
 
     }
 

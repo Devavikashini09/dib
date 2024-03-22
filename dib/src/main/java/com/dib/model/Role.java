@@ -16,14 +16,9 @@ import java.util.Set;
 @Table(name = "roles")
 
 public class Role {
+
     @Id @GeneratedValue
     private int id;
-
-    @ManyToMany
-    @JoinTable(name = "role_permission",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "permission_id"))
-    private Set<Permission> permissions = new HashSet<>();
 
     @NotNull @Column(unique = true)
     private String  name;

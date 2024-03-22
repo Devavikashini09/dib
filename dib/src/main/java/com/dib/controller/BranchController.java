@@ -38,9 +38,17 @@ public class BranchController {
 
    }
    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBranchById (@PathVariable int id){
-       branchService.deleteBranchById(id);
-       return ResponseEntity.noContent().build();
+    public ResponseEntity<String> deleteBranchById (@PathVariable int id){
+       String message;
+       try {
+           branchService.deleteBranchById(id);
+           message = "Branch with ID " + id + " deleted successfully.";
+           return ResponseEntity.status(HttpStatus.OK).body(message);
+       } catch (Exception e) {
+           message = "Failed to delete branch with ID " + id + ": " + e.getMessage();
+           return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
+       }
+
 
    }
 

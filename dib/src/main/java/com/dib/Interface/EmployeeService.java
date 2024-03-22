@@ -12,6 +12,6 @@ public interface EmployeeService {
 
     public Employee updateEmployeeById(int id, Employee employee);
 
-    public void deleteEmployeeById(int id);
+    public String deleteEmployeeById(int id);
 
 }

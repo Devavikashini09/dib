@@ -1,6 +1,7 @@
 package com.dib.service;
 
 import com.dib.Interface.TransactionService;
+import com.dib.exception.NotFoundUser;
 import com.dib.model.Account;
 import com.dib.model.Transaction;
 import com.dib.repository.AccountRepository;
@@ -54,7 +55,16 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public String deleteTransactionById(int id) {
-        transactionRepository.deleteById(id);
-        return "Transaction with id: " + id + " deleted successfully";
+        Optional<Transaction> optional = transactionRepository.findById(id);
+        if (optional.isPresent()) {
+            Transaction transaction = optional.get();
+            transactionRepository.save(transaction);
+            return "Transaction of customer deleted";
+        } else {
+            throw new NotFoundUser();
+        }
+
+
+
     }
 }

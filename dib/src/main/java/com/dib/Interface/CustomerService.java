@@ -1,6 +1,5 @@
 package com.dib.Interface;
 
-import com.dib.model.Account;
 import com.dib.model.Customer;
 
 import java.util.List;
@@ -11,7 +10,7 @@ public interface CustomerService {
     public List<Customer> getCustomer();
     public Optional<Customer> getCustomerById(int id);
     Customer updateCustomerById(int id, Customer customer);
-    public void deleteCustomerById(int id);
+    public String deleteCustomerById(int id);
 
 
 }

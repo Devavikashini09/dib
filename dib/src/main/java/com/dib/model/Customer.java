@@ -63,6 +63,10 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Account> accounts;
 
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private Branch Branch;
+
     @NotNull
     @Column(name = "created_at")
     private LocalDateTime created_at;
