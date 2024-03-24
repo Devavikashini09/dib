@@ -3,8 +3,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 @Table(name = "customers")
 
 public class Customer {
@@ -20,9 +24,6 @@ public class Customer {
     @Id
     @GeneratedValue
     private int id;
-
-    @NotNull
-    private String account_type;
 
     @NotNull
     private String first_name;
@@ -52,20 +53,24 @@ public class Customer {
     private Date date_of_birth;
 
     @NotNull
-    private Long customer_id;
-
-    @NotNull
     private  String gender;
 
     @NotNull
-    private Long initial_balance;
+    private BigDecimal account_balance;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Account> accounts;
+    private String account_number;
 
-    @ManyToOne
-    @JoinColumn(name = "branch_id")
-    private Branch Branch;
+    @NotNull
+    private String  customer_id;
+
+    private String status;
+
+//    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+//    private List<Account> accounts;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "branch_id")
+//    private Branch Branch;
 
     @NotNull
     @Column(name = "created_at")

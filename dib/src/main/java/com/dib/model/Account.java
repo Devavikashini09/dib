@@ -28,16 +28,16 @@ public class Account {
     @NotNull
     private String account_type;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "branch_id",nullable = false)
-    private Branch branch;
-
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    private List<Transaction> transactions = new ArrayList<>();
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "customer_id")
+//    private Customer customer;
+//
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "branch_id",nullable = false)
+//    private Branch branch;
+//
+//    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+//    private List<Transaction> transactions = new ArrayList<>();
 
     @NotNull
     private Long balance;

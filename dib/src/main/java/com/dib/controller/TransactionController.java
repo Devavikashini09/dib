@@ -19,8 +19,13 @@ public class TransactionController {
     @Autowired
     public TransactionService transactionService;
 
-    @PostMapping
-    public ResponseEntity<Transaction> saveTransaction(@RequestBody @NonNull  Transaction transaction)
+    @PostMapping("/deposit")
+    public ResponseEntity<Transaction> saveDeposit(@RequestBody @NonNull  Transaction transaction)
+    {
+        return new ResponseEntity<>(transactionService.SaveTransaction(transaction), HttpStatus.CREATED);
+    }
+    @PostMapping("/withdrawal")
+    public ResponseEntity<Transaction> saveWithdrawal(@RequestBody @NonNull  Transaction transaction)
     {
         return new ResponseEntity<>(transactionService.SaveTransaction(transaction), HttpStatus.CREATED);
     }

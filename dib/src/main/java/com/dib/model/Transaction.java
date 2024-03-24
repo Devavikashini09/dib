@@ -18,9 +18,9 @@ public class Transaction {
     @Id @GeneratedValue
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "account_id",nullable = false)
-    private Account account;
+//    @ManyToOne
+//    @JoinColumn(name = "account_id",nullable = false)
+//    private Account account;
 
     private Long account_num1;
 

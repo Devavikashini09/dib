@@ -18,9 +18,9 @@ public class Employee {
     @Id @GeneratedValue
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "branch_id")
-    private Branch branch;
+//    @ManyToOne
+//    @JoinColumn(name = "branch_id")
+//    private Branch branch;
 
     private String first_name;
 

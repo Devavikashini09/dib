@@ -1,6 +1,8 @@
 package com.dib.controller;
 
 import com.dib.constant.Constants;
+import com.dib.dto.BankResponse;
+import com.dib.dto.CustomerRequest;
 import com.dib.model.Customer;
 import com.dib.Interface.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +15,22 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/api/customers")
 @CrossOrigin
 public class CustomerController {
     @Autowired
     public CustomerService customerService;
-
     @PostMapping
-    public ResponseEntity<Customer> saveCustomer(@RequestBody  @NonNull Customer customer){
-        String accountType = Constants.ACCOUNT_TYPE_SAVINGS;
-        return new ResponseEntity<>(customerService.saveCustomer(customer),HttpStatus.CREATED);
-
+    public BankResponse createCustomer(@RequestBody CustomerRequest customerRequest) {
+        return customerService.createCustomer(customerRequest);
     }
+
+//    @PostMapping
+//    public ResponseEntity<Customer> saveCustomer(@RequestBody  @NonNull Customer customer){
+//        String accountType = Constants.ACCOUNT_TYPE_SAVINGS;
+//        return new ResponseEntity<>(customerService.saveCustomer(customer),HttpStatus.CREATED);
+//
+//    }
     @GetMapping
     public List<Customer> getCustomer(){
         return customerService.getCustomer();
@@ -37,10 +43,10 @@ public class CustomerController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Customer>updateCustomerById(@RequestBody @NonNull Customer customer){
-       return new ResponseEntity<>(customerService.saveCustomer(customer),HttpStatus.CREATED);
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<Customer>updateCustomerById(@RequestBody @NonNull Customer customer){
+//       return new ResponseEntity<>(customerService.saveCustomer(customer),HttpStatus.CREATED);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleustteComerById(@PathVariable int id) {

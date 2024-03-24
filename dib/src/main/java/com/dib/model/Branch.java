@@ -16,8 +16,8 @@ public class Branch {
     @Id @GeneratedValue
     private int id;
 
-    @OneToMany(mappedBy = "Branch")
-    private List<Customer> customers;
+//    @OneToMany(mappedBy = "Branch")
+//    private List<Customer> customers;
 
     private String name;
 

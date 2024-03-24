@@ -1,11 +1,17 @@
 package com.dib.service;
 import com.dib.Interface.CustomerService;
+import com.dib.dto.AccountInfo;
+import com.dib.dto.BankResponse;
+import com.dib.dto.CustomerRequest;
 import com.dib.exception.NotFoundCustomer;
 import com.dib.exception.NotFoundUser;
 import com.dib.model.Customer;
 import com.dib.repository.CustomerRepository;
+import com.dib.util.AccountUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,10 +19,53 @@ import java.util.Optional;
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     public CustomerRepository customerRepository;
-    @Override
-    public Customer saveCustomer(Customer customer) {
 
-        return customerRepository.save(customer);
+    @Override
+    public BankResponse createCustomer(CustomerRequest customerRequest) {
+
+
+        Customer customer = customerRepository.findByEmail(customerRequest.getEmail());
+        if(customer != null) {
+            // Customer with the provided email already exists
+            BankResponse bankResponse = BankResponse.builder()
+                    .response_code(AccountUtil.ACCOUNT_EXISTS_CODE)
+                    .response_message(AccountUtil.ACCOUNT_EXISTS_MESS)
+                    .accountInfo(null)
+                    .build();
+            // Handle the response or return it as needed
+        } else {
+            // Customer with the provided email does not exist
+            // Proceed with creating a new customer
+        }
+
+
+             customer= Customer.builder()
+                .first_name(customerRequest.getFirst_name())
+                .last_name(customerRequest.getLast_name())
+                .mobile_no(customerRequest.getMobile_no())
+                .address(customerRequest.getAddress())
+                .city(customerRequest.getCity())
+                .state(customerRequest.getState())
+                .country(customerRequest.getCountry())
+                .email(customerRequest.getEmail())
+                .date_of_birth(customerRequest.getDate_of_birth())
+                .gender(customerRequest.getGender())
+                .account_balance(BigDecimal.ZERO)
+                .account_number(AccountUtil.generateAccountNumber())
+                .customer_id(AccountUtil.generateCustomerId())
+                .status("ACTIVE")
+                .build();
+        Customer savedCustomer= customerRepository.save(customer);
+        return BankResponse.builder()
+                .response_code(AccountUtil.ACCOUNT_EXISTS_CODE2)
+                .response_message(AccountUtil.ACCOUNT_EXISTS_MESS2)
+                .accountInfo(AccountInfo.builder()
+                        .account_number(savedCustomer.getAccount_number())
+                        .account_balance(savedCustomer.getAccount_balance())
+                        .customer_id(savedCustomer.getCustomer_id())
+                        .account_name(savedCustomer.getFirst_name() + " " +savedCustomer.getLast_name())
+                        .build())
+                .build();
     }
 
     @Override
