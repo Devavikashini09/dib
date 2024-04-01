@@ -19,4 +19,5 @@ public class BankResponse {
 
     private AccountInfo accountInfo;
 
+
 }

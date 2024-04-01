@@ -28,4 +28,10 @@ public class GlobalExceptionHandler {
            return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
 
 }
+    @ExceptionHandler(EmailNotExists.class)
+    public ResponseEntity<Object> EmailNotFound(EmailNotExists e) {
+        String errorMessage = "email not exist";
+        return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
+
+    }
 }

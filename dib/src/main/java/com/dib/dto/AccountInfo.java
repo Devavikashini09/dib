@@ -1,11 +1,8 @@
 package com.dib.dto;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
-
 import java.math.BigDecimal;
 
 @Data
@@ -13,7 +10,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Builder
 public class AccountInfo {
-    
+
     private String account_name;
 
     private BigDecimal account_balance;

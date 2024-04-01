@@ -1,8 +1,10 @@
 package com.dib.service;
 import com.dib.Interface.CustomerService;
+import com.dib.Interface.EmailService;
 import com.dib.dto.AccountInfo;
 import com.dib.dto.BankResponse;
 import com.dib.dto.CustomerRequest;
+import com.dib.dto.EmailDetails;
 import com.dib.exception.NotFoundCustomer;
 import com.dib.exception.NotFoundUser;
 import com.dib.model.Customer;
@@ -19,6 +21,8 @@ import java.util.Optional;
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     public CustomerRepository customerRepository;
+    @Autowired
+    public EmailService emailService;
 
     @Override
     public BankResponse createCustomer(CustomerRequest customerRequest) {
@@ -56,6 +60,15 @@ public class CustomerServiceImpl implements CustomerService {
                 .status("ACTIVE")
                 .build();
         Customer savedCustomer= customerRepository.save(customer);
+        //send email alert
+        EmailDetails emailDetails= EmailDetails.builder()
+                .recipient(savedCustomer.getEmail())
+                .subject("ACCOUNT CREATION")
+                .message_body("Congratulations! Your account is successfully created using online banking.\n" +
+                        " Your Account Details: \n Acoount Name: "+savedCustomer.getFirst_name() + " "+savedCustomer.getLast_name()+
+                        "\nAccount Number: "+ savedCustomer.getAccount_number()+ "\nCustomer Id: "+savedCustomer.getCustomer_id())
+                .build();
+        emailService.sendEmailAlert(emailDetails);
         return BankResponse.builder()
                 .response_code(AccountUtil.ACCOUNT_EXISTS_CODE2)
                 .response_message(AccountUtil.ACCOUNT_EXISTS_MESS2)
