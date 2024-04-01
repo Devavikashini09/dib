@@ -63,9 +63,8 @@ public class CustomerServiceImpl implements CustomerService {
         //send email alert
         EmailDetails emailDetails= EmailDetails.builder()
                 .recipient(savedCustomer.getEmail())
-                .subject("ACCOUNT CREATION")
-                .message_body("Congratulations! Your account is successfully created using online banking.\n" +
-                        " Your Account Details: \n Acoount Name: "+savedCustomer.getFirst_name() + " "+savedCustomer.getLast_name()+
+                .subject("\"Congratulations! Your New Account with Demo Indian Bank has Been Successfully Created\"")
+                .message_body(" Your Account Details: \n Acoount Name: "+savedCustomer.getFirst_name() + " "+savedCustomer.getLast_name()+
                         "\nAccount Number: "+ savedCustomer.getAccount_number()+ "\nCustomer Id: "+savedCustomer.getCustomer_id())
                 .build();
         emailService.sendEmailAlert(emailDetails);
